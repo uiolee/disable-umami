@@ -1,0 +1,40 @@
+{
+  "name": "disable-umami",
+  "version": "0.0.0",
+  "description": "A WebExtension to disable Umami Analytics.",
+  "keywords": [
+    "WebExtension",
+    "JavaScript",
+    "Firefox"
+  ],
+  "license": "MPL-2.0",
+  "author": "uiolee (https://github.com/uiolee)",
+  "scripts": {
+    "prebuild": "pnpm run clean",
+    "build": "pnpm run build:dist",
+    "build:dist": "parcel build src/manifest.json --no-cache --no-autoinstall --detailed-report --no-source-maps",
+    "build:ext": "web-ext build",
+    "clean": "rm -rf dist .web-ext .parcel-cache",
+    "dev": "web-ext run --devtools",
+    "lint": "pnpm run ling:ext",
+    "lint:es": "eslint src",
+    "lint:ext": "web-ext lint",
+    "sign": "web-ext sign",
+    "prewatch": "pnpm run clean",
+    "watch": "parcel watch src/manifest.json --watch-dir src --no-hmr"
+  },
+  "devDependencies": {
+    "@parcel/config-webextension": "^2.12.0",
+    "@parcel/optimizer-data-url": "^2.12.0",
+    "@parcel/transformer-inline-string": "^2.12.0",
+    "eslint": "^9.13.0",
+    "eslint-config-uiolee": "^0.2.0",
+    "globals": "^15.11.0",
+    "parcel": "^2.12.0",
+    "prettier": "^3.3.3",
+    "web-ext": "^8.3.0"
+  },
+  "dependencies": {
+    "@picocss/pico": "^2.0.6"
+  }
+}
