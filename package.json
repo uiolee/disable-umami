@@ -1,6 +1,6 @@
 {
   "name": "disable-umami",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A WebExtension to disable Umami Analytics.",
   "keywords": [
     "WebExtension",
