@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: ""
+        required: true
+        default: "keep current"
+        type: choice
+        options:
+          - "keep current"
+
+  push:
+    tags:
+      - "v*.*.*"
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+env:
+  default_node_version: "lts/*"
+  default_pnpm_version: "latest"
+  artifact_name: build_${{ github.sha }}
+
+jobs:
+  release:
+    timeout-minutes: 30
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: ${{ env.default_pnpm_version }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{env.default_node_version}}
+          cache: pnpm
+
+      - name: Install Dependencies
+        run: pnpm i
+
+      - name: Build
+        run: |
+          pnpm build
+
+      - name: Sign
+        env:
+          WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
+          WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
+        run: |
+          pnpm sign
