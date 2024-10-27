@@ -1,0 +1,11 @@
+{
+  "name": {
+    "message": "Disable Umami"
+  },
+  "short_name": {
+    "message": "Disable Umami"
+  },
+  "description": {
+    "message": "A WebExtension to disable Umami Analytics."
+  }
+}

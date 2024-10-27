@@ -1,0 +1,45 @@
+{
+  "action": {
+    "default_area": "navbar",
+    "default_icon": {
+      "16": "icons/favicon-16x16.png",
+      "180": "icons/apple-touch-icon.png",
+      "192": "icons/android-chrome-192x192.png",
+      "32": "icons/favicon-32x32.png",
+      "512": "icons/android-chrome-512x512.png"
+    },
+    "default_popup": "pages/popup/index.html",
+    "default_title": "__MSG_name__"
+  },
+  "author": "Uiolee",
+  "background_color": "#ffffff",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{c66020ec-2522-47ff-b252-a6e3fce6efcb}"
+    }
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/content_scripts.js"],
+      "matches": ["http://*/*", "https://*/*"],
+      "run_at": "document_start"
+    }
+  ],
+  "default_locale": "en",
+  "description": "__MSG_description__",
+  "display": "standalone",
+  "homepage_url": "https://github.com/uiolee/disable-umami",
+  "icons": {
+    "16": "icons/favicon-16x16.png",
+    "180": "icons/apple-touch-icon.png",
+    "192": "icons/android-chrome-192x192.png",
+    "32": "icons/favicon-32x32.png",
+    "512": "icons/android-chrome-512x512.png"
+  },
+  "manifest_version": 3,
+  "name": "__MSG_name__",
+  "permissions": ["storage"],
+  "short_name": "__MSG_short_name__",
+  "theme_color": "#ffffff",
+  "version": "0.0.0"
+}
