@@ -15,5 +15,6 @@ export default {
   },
   sign: {
     channel: "listed",
+    amoMetadata: "amo-metadata.json",
   },
 };
