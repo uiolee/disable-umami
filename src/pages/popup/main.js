@@ -1,10 +1,11 @@
+const i18n = browser.i18n.getMessage;
+
 (async () => {
-  const getMsg = browser.i18n.getMessage;
   const l10nKey = "data-l10n";
   const elems = document.querySelectorAll(`[${l10nKey}]`);
   for (const elem of elems) {
     const msgKey = elem.getAttribute(l10nKey);
-    const msgValue = getMsg(msgKey);
+    const msgValue = i18n(msgKey);
     if (msgValue) {
       elem.textContent = msgValue;
     }
@@ -62,7 +63,15 @@ const showStorage = (jsonStr) => {
     .query({ active: true, currentWindow: true })
     .then((tabs) => {
       const { url, title, favIconUrl, status: tabStatus } = tabs[0];
-      document.querySelector("#url").textContent = url;
+      if (url && url.startsWith("http")) {
+        setUrl(url);
+      } else {
+        setUrl(i18n("disallow"));
+        document.querySelector("html").ariaDisabled = true;
+        document.querySelector("input").ariaDisabled = true;
+        document.querySelector("span").ariaDisabled = true;
+        return Promise.reject(i18n("disallow"));
+      }
       if (tabStatus == "complete") {
         setBusy(0);
       }
@@ -83,15 +92,17 @@ const showStorage = (jsonStr) => {
   });
 })();
 
-await browser.runtime.onMessage.addListener(
-  (message, sender, senderResponse) => {
-    let from = sender.origin;
-    console.debug(`receive '${message}' from '${from}'`);
-    showStorage(message);
-    setUrl(from);
+(async () => {
+  await browser.runtime.onMessage.addListener(
+    (message, sender, senderResponse) => {
+      let from = sender.origin;
+      console.debug(`receive '${message}' from '${from}'`);
+      showStorage(message);
+      setUrl(from);
 
-    senderResponse();
-  },
-);
+      senderResponse();
+    },
+  );
 
-sendMsg("check");
+  sendMsg("check");
+})();
