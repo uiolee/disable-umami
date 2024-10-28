@@ -20,8 +20,12 @@
     "lint:es": "eslint src",
     "lint:ext": "web-ext lint",
     "sign": "web-ext sign",
+    "postversion": "node scripts/postversion.mjs",
     "prewatch": "pnpm run clean",
     "watch": "parcel watch src/manifest.json --watch-dir src --no-hmr"
+  },
+  "dependencies": {
+    "@picocss/pico": "^2.0.6"
   },
   "devDependencies": {
     "@parcel/config-webextension": "^2.12.0",
@@ -29,12 +33,10 @@
     "@parcel/transformer-inline-string": "^2.12.0",
     "eslint": "^9.13.0",
     "eslint-config-uiolee": "^0.2.0",
+    "execa": "^9.5.0",
     "globals": "^15.11.0",
     "parcel": "^2.12.0",
     "prettier": "^3.3.3",
     "web-ext": "^8.3.0"
-  },
-  "dependencies": {
-    "@picocss/pico": "^2.0.6"
   }
 }
