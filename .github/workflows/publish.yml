@@ -66,6 +66,8 @@ jobs:
           pnpm sign
 
       - uses: actions/attest-build-provenance@v1
+        id: attest
+        name: attest xpi
         with:
           subject-path: ${{ env.glob_xpi }}
 
@@ -75,8 +77,9 @@ jobs:
           compression-level: 1
           name: ${{ env.artifact_name_signxpi }}
           path: |
-            .web-ext/
+            .web-ext
             LICENSE
+            ${{ steps.attest.outputs.bundle-path }}
 
   release:
     name: Release
