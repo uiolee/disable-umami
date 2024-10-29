@@ -14,7 +14,8 @@
   "author": "Uiolee",
   "background_color": "#ffffff",
   "browser_specific_settings": {
-    "gecko": { "id": "{c66020ec-2522-47ff-b252-a6e3fce6efcb}" }
+    "gecko": { "id": "{c66020ec-2522-47ff-b252-a6e3fce6efcb}" },
+    "gecko_android": { "id": "{2aa42bf7-4bfa-4f03-926c-9c0420c38994}" }
   },
   "content_scripts": [
     {
