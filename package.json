@@ -16,7 +16,7 @@
     "build:ext": "web-ext build",
     "clean": "rm -rf dist .web-ext .parcel-cache",
     "dev": "web-ext run --devtools",
-    "lint": "pnpm run ling:ext",
+    "lint": "pnpm run lint:ext",
     "lint:es": "eslint src",
     "lint:ext": "web-ext lint",
     "sign": "web-ext sign",
