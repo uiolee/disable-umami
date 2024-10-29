@@ -39,5 +39,5 @@
   "permissions": ["storage"],
   "short_name": "__MSG_short_name__",
   "theme_color": "#ffffff",
-  "version": "0.0.1"
+  "version": "0.1.0"
 }
