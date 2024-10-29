@@ -23,6 +23,7 @@ env:
   artifact_name: build_${{ github.sha }}
   artifact_name_signxpi: signxpi_${{ github.sha }}
   glob_xpi: "./.web-ext/*.xpi"
+  attest_json: "./attestation-${{ github.sha }}.jsonl"
 
 jobs:
   build:
@@ -71,15 +72,20 @@ jobs:
         with:
           subject-path: ${{ env.glob_xpi }}
 
+      - name: copy attestation result
+        run: |
+          cp ${{ steps.attest.outputs.bundle-path }} ${{ env.attest_json }}
+
       - uses: actions/upload-artifact@v4
         with:
           retention-days: 1
           compression-level: 1
           name: ${{ env.artifact_name_signxpi }}
+          include-hidden-files: true
           path: |
-            .web-ext
+            ${{ env.glob_xpi }}
             LICENSE
-            ${{ steps.attest.outputs.bundle-path }}
+            ${{ env.attest_json }}
 
   release:
     name: Release
@@ -100,5 +106,7 @@ jobs:
         with:
           generate_release_notes: true
           discussion_category_name: "Announcements"
-          files: ${{ env.glob_xpi }}
+          files: |
+            ${{ env.glob_xpi }}
+            ${{ env.attest_json }}
           fail_on_unmatched_files: false

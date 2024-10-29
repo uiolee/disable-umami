@@ -14,6 +14,9 @@ on:
       - "package.json"
       - ".github/workflows/ci.yml"
 
+permissions:
+  contents: read
+
 env:
   default_node_version: "lts/*"
   default_pnpm_version: "latest"
