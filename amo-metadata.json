@@ -1,10 +1,6 @@
 {
   "categories": ["privacy-security"],
-  "contributions_url": "",
   "default_locale": "en-US",
-  "developer_comments": {
-    "en-US": ""
-  },
   "homepage": {
     "en-US": "https://github.com/uiolee/disable-umami/"
   },
@@ -18,10 +14,6 @@
   "summary": {
     "en-US": "A WebExtension to disable Umami Analytics."
   },
-  "support_email": {
-    "en-US": ""
-  },
-  "tags": ["privacy-security"],
   "version": {
     "license": "MPL-2.0"
   }
