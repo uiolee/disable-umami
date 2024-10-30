@@ -9,6 +9,11 @@
 
 A WebExtension to disable Umami Analytics to prevent being tracked.
 
+> UserScript is available:
+>
+> - https://greasyfork.org/scripts/514774
+> - https://gist.github.com/uiolee/8683b0c8de01e922771ad7f68e911874
+
 ## Install
 
 ### Mozilla Addon
