@@ -16,11 +16,14 @@ A WebExtension to disable Umami Analytics to prevent being tracked.
 
 ## Install
 
+Available for:
+
+- Firefox
+- Firefox for Android
+
 ### Mozilla Addon
 
-![Mozilla Add-on Version](https://img.shields.io/amo/v/disable-umami?logo=firefox)
-
-https://addons.mozilla.org/firefox/addon/disable-umami/
+[![Mozilla Add-on Version](https://img.shields.io/amo/v/disable-umami?logo=firefox)](https://addons.mozilla.org/addon/disable-umami/)
 
 ### Github Release
 
