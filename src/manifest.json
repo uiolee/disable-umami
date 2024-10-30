@@ -21,7 +21,7 @@
     {
       "js": ["scripts/content_scripts.js"],
       "matches": ["http://*/*", "https://*/*"],
-      "run_at": "document_start"
+      "run_at": "document_idle"
     }
   ],
   "default_locale": "en",
